@@ -4,7 +4,7 @@
 #author		 	 :Memento
 #date            :20160410
 #version         :0.1    
-#usage			 :./re-download-apps.sh
+#usage		 : chmod +x re-download-apps.sh && ./re-download-apps.sh (execute as root)
 #notes           :Please make sure you backed up the content of your apps directory, or at least print the content of the directory (ls command). I cannot be held responsible for any damage you could do with this script.
 #bash_version    :4.3.11(1)-release
 #Copyright (C) 2016 Memento
@@ -30,6 +30,8 @@ do
 	spk unpack "$f.spk" > "$f.appid"
 	#remove the app spk
 	rm "$f.spk"
+	#change ownership
+	chown -R sandstorm:sandstorm "$f"
 
 done
 
